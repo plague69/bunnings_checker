@@ -7,7 +7,7 @@
     define('CACHE_PATH', "tmp/cache_");
 
     // how long to keep the cache files (hours)
-    define('CACHE_TIME', 48);
+    define('CACHE_TIME_SECONDS', 60);
 
     // return location and name for cache file
     function cache_file()
@@ -22,7 +22,7 @@
 
         // check that cache file exists and is not too old
         if(!file_exists($file)) return;
-        if(filemtime($file) < time() - CACHE_TIME * 3600) return;
+        if(filemtime($file) < time() - CACHE_TIME_SECONDS) return;
 
         // if so, display cache file and stop processing
         readfile($file);
